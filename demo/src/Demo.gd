@@ -12,6 +12,7 @@ onready var button: Button = $Button
 onready var screen_recorder: ScreenRecorder = $ScreenRecorder
 onready var wait_label: Label = $WaitLabel
 onready var video_player: VideoPlayer = $CanvasLayer/VideoPlayer
+onready var viewport: Viewport = $ViewportContainer/Viewport
 
 
 func _on_Button_pressed() -> void:
@@ -20,10 +21,10 @@ func _on_Button_pressed() -> void:
 		State.WAIT:
 			state = State.RECORD
 			button.text = "Stop"
-			screen_recorder.start()
+			screen_recorder.start(viewport)
 		State.RECORD:
 			state = State.STOP
-			$Sprite.queue_free()
+			$ViewportContainer.queue_free()
 			wait_label.show()
 			screen_recorder.stop()
 		State.STOP:
@@ -35,7 +36,7 @@ func _on_Button_pressed() -> void:
 
 
 func _on_ScreenRecorder_process_completed(output_path: String) -> void:
-	var stream := VideoStreamTheora.new()
+	var stream := VideoStreamWebm.new()
 	
 	wait_label.hide()
 	button.text = "Play"
