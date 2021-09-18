@@ -6,7 +6,8 @@ Based on [Godot Video Rendering Demo](https://github.com/Calinou/godot-video-ren
 ## How to use
 
 Just copy the [ScreenRecorder.gd](src/lib/ScreenRecorder.gd) script to your project and you are good
-to go. Be sure to include the copyright notice, just in case.
+to go. Be sure to include the copyright notice, just in case. See [LICENSE.md](LICENSE.md) for more
+information.
 
 ## How it works
 
